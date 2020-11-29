@@ -1,0 +1,76 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Laba2NYSS"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Laba2NYSS.UpdateWindow"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="UpdateWindow" Height="450" Width="920">
+    <Grid Height="420">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="202*"/>
+            <ColumnDefinition Width="204*"/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer Grid.ColumnSpan="2" Margin="0,0,-0.4,10" CanContentScroll="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <StackPanel HorizontalAlignment="Left" Height="410" VerticalAlignment="Top" Width="904">
+                <Label x:Name="ChangedThreatsLabel" Width="169" Content="Измененные элементы" VerticalAlignment="Top" Height="30" HorizontalAlignment="Center" FontSize="15"/>
+                <DataGrid CanUserAddRows="False" ScrollViewer.CanContentScroll="True" MaxHeight="300" VerticalAlignment="Top" x:Name="ChangesDataGrid" AutoGenerateColumns="False" Margin="10,0,64,0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="80" IsReadOnly="True" Header="Id" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Width="100" IsReadOnly="True" Header="Поле" Binding="{Binding FieldName}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Width="325" IsReadOnly="True" Header="Было" Binding="{Binding PrevValue}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Width="325" IsReadOnly="True" Header="Стало" Binding="{Binding NewValue}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label x:Name="NewThreatsLabel" Width="126" VerticalAlignment="Top" Height="30" HorizontalAlignment="Center" FontSize="15" Content="Новые элементы"/>
+                <DataGrid CanUserAddRows="False" x:Name="NewThreatsDataGrid" ScrollViewer.CanContentScroll="True" MaxHeight="200" VerticalAlignment="Bottom" AutoGenerateColumns="False" Margin="10,0,64,0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="100" IsReadOnly="True" Header="Id" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Width="580" IsReadOnly="True" Header="Наименование" Binding="{Binding Name}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label x:Name="DeletedThreatsLabel" Width="162" VerticalAlignment="Top" Height="30" HorizontalAlignment="Center" FontSize="15" Content="Удаленные элементы"/>
+                <DataGrid CanUserAddRows="False" ScrollViewer.CanContentScroll="True" MaxHeight="200" VerticalAlignment="Top" x:Name="DeletedThreatsDataGrid" AutoGenerateColumns="False" Margin="10,0,64,0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Width="100" IsReadOnly="True" Header="Id" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Width="580" IsReadOnly="True" Header="Наименование" Binding="{Binding Name}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="TextWrapping" Value="Wrap"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </ScrollViewer>
+        <Label x:Name="NoChangesDetectedLabel" Content="Изменений не найдено." FontSize="30" HorizontalAlignment="Center"  VerticalAlignment="Center" Height="50" Width="341" Margin="283,224,289.6,146" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
